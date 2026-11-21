@@ -14,7 +14,7 @@ export default function Photo() {
   }, []);
 
   return (
-    <div className="relative mx-auto aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-2xl bg-ink ring-1 ring-line">
+    <div className="relative mx-auto aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-2xl bg-navy ring-1 ring-line">
       {loaded ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={profile.photo} alt={`Portrait of ${profile.name}`} className="h-full w-full object-cover" />

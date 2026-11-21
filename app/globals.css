@@ -1,18 +1,70 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Colors that change between light and dark mode */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-dark: var(--brand-strong);
+  --color-amber-soft: var(--amber-soft);
+  --color-amber-ink: var(--amber-ink);
+}
+
+/* Colors that stay the same */
 @theme {
-  --color-paper: #f5f7fa;
-  --color-ink: #0f1e33;
-  --color-ink-2: #1a2d4a;
-  --color-muted: #5b6b82;
-  --color-line: #dce3ec;
-  --color-brand: #0e7c86;
-  --color-brand-dark: #0a5f67;
-  --color-brand-soft: #e3f3f4;
+  --color-navy: #0f1e33;
+  --color-navy-2: #1a2d4a;
+  --color-brand-deep: #0a5f67;
   --color-amber: #f5a524;
   --color-signal: #12b886;
   --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root,
+.light-scope {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --fg: #0f1e33;
+  --muted: #5b6b82;
+  --line: #dce3ec;
+  --brand: #0e7c86;
+  --brand-soft: #e3f3f4;
+  --brand-strong: #0a5f67;
+  --amber-soft: #fff6e5;
+  --amber-ink: #5c4413;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b1524;
+  --surface: #12223a;
+  --fg: #e7eef6;
+  --muted: #9aabc1;
+  --line: #22354f;
+  --brand: #2bb3bd;
+  --brand-soft: #113a42;
+  --brand-strong: #6fd3da;
+  --amber-soft: #2e2612;
+  --amber-ink: #f3d9a4;
+  color-scheme: dark;
+}
+
+/* The hero's project board always stays light */
+.dark .light-scope {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --fg: #0f1e33;
+  --muted: #5b6b82;
+  --line: #dce3ec;
+  --brand: #0e7c86;
+  color-scheme: light;
 }
 
 html {
@@ -20,14 +72,18 @@ html {
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 250ms ease, color 250ms ease;
 }
 
 ::selection {
   background: #bfe6e9;
+}
+.dark ::selection {
+  background: #1c5a61;
 }
 
 section[id] {
@@ -35,7 +91,7 @@ section[id] {
 }
 
 .hero-grid {
-  background-color: var(--color-ink);
+  background-color: var(--color-navy);
   background-image: radial-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px);
   background-size: 22px 22px;
 }
@@ -46,7 +102,7 @@ section[id] {
   border-radius: 4px;
 }
 
-/* Live board animation */
+/* Live board */
 .board-card {
   transition:
     transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -77,8 +133,58 @@ section[id] {
   40% { opacity: 1; }
 }
 
+/* Hero entrance: text lines one after another, then the board */
+.hero-in > * {
+  animation: heroIn 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.hero-in > *:nth-child(2) { animation-delay: 90ms; }
+.hero-in > *:nth-child(3) { animation-delay: 180ms; }
+.hero-in > *:nth-child(4) { animation-delay: 270ms; }
+.hero-in > *:nth-child(5) { animation-delay: 360ms; }
+.board-in {
+  animation: boardIn 1000ms 250ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes boardIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Scroll reveal (only when JavaScript runs, so content never stays hidden) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Gentle lift on cards */
+.lift {
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -24px rgb(15 30 51 / 0.35);
+}
+.dark .lift:hover {
+  box-shadow: 0 18px 40px -24px rgb(0 0 0 / 0.7);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  body { transition: none; }
   .board-card, .board-cursor { transition: none; }
   .pulse-dot, .typing span { animation: none; }
+  .hero-in > *, .board-in { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .lift:hover { transform: none; }
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Code2, Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 import CvMenu from "./CvMenu";
 import { GitHubIcon, LinkedInIcon } from "./icons";
 import { profile } from "../data";
@@ -45,18 +46,20 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
-        solid ? "border-b border-line bg-white/90 text-ink backdrop-blur" : "border-b border-transparent text-white"
+        solid ? "border-b border-line bg-surface/90 text-fg backdrop-blur" : "border-b border-transparent text-white"
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
         <a href="#top" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand font-display text-[15px] font-bold text-white">
-            SA
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand text-white shadow-[inset_0_-2px_0_rgb(0_0_0/0.15)]">
+            <Code2 size={20} strokeWidth={2.4} aria-hidden />
           </span>
-          <span className="font-display text-[17px] font-semibold tracking-tight">Shaheer Ahmed</span>
+          <span className="font-display text-[16px] font-semibold leading-none tracking-tight sm:text-[17px]">
+            Syed Shaheer Ahmed
+          </span>
         </a>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-0.5 xl:flex">
           {LINKS.map((l) => (
             <li key={l.id}>
               <a
@@ -68,7 +71,7 @@ export default function Navbar() {
                       ? "bg-brand-soft font-medium text-brand-dark"
                       : "bg-white/10 font-medium text-white"
                     : solid
-                      ? "text-muted hover:text-ink"
+                      ? "text-muted hover:text-fg"
                       : "text-white/75 hover:text-white"
                 }`}
               >
@@ -84,7 +87,7 @@ export default function Navbar() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className={`hidden rounded-md p-2 sm:inline-flex ${solid ? "text-muted hover:text-ink" : "text-white/75 hover:text-white"}`}
+            className={`hidden rounded-md p-2 sm:inline-flex ${solid ? "text-muted hover:text-fg" : "text-white/75 hover:text-white"}`}
           >
             <GitHubIcon />
           </a>
@@ -93,10 +96,11 @@ export default function Navbar() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className={`hidden rounded-md p-2 sm:inline-flex ${solid ? "text-muted hover:text-ink" : "text-white/75 hover:text-white"}`}
+            className={`hidden rounded-md p-2 sm:inline-flex ${solid ? "text-muted hover:text-fg" : "text-white/75 hover:text-white"}`}
           >
             <LinkedInIcon />
           </a>
+          <ThemeToggle className={solid ? "text-muted hover:text-fg" : "text-white/75 hover:text-white"} />
           <div className="hidden sm:block">
             <CvMenu size="sm" tone={solid ? "light" : "dark"} />
           </div>
@@ -105,7 +109,7 @@ export default function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
-            className="rounded-md p-2 lg:hidden"
+            className="rounded-md p-2 xl:hidden"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -113,7 +117,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-line bg-white px-5 pb-5 pt-2 text-ink lg:hidden">
+        <div className="border-t border-line bg-surface px-5 pb-5 pt-2 text-fg xl:hidden">
           <ul className="flex flex-col">
             {LINKS.map((l) => (
               <li key={l.id}>

@@ -11,16 +11,23 @@ export const metadata: Metadata = {
     "Full-stack MERN developer in Karachi building secure, real-time web apps with React, Next.js, Node.js, Express, and MongoDB.",
   openGraph: {
     title: "Syed Shaheer Ahmed | Full-Stack MERN Developer",
-    description:
-      "Secure, real-time web apps with React, Next.js, Node.js, Express, and MongoDB.",
+    description: "Secure, real-time web apps with React, Next.js, Node.js, Express, and MongoDB.",
     type: "website",
   },
 };
 
+// Runs before the page paints, so the saved theme shows without a flash.
+const themeScript = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))d.classList.add('dark');}catch(e){}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen" suppressHydrationWarning>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="min-h-screen" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

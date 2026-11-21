@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import LiveBoard from "./components/LiveBoard";
 import Navbar from "./components/Navbar";
+import RevealObserver from "./components/RevealObserver";
 import Photo from "./components/Photo";
 import CvMenu from "./components/CvMenu";
 import { GitHubIcon, LinkedInIcon } from "./components/icons";
@@ -55,7 +56,7 @@ const uniIcons: Record<string, LucideIcon> = { waves: Waves, camera: Camera, rou
 
 function SectionTitle({ icon: Icon, title, intro }: { icon: LucideIcon; title: string; intro?: string }) {
   return (
-    <div className="max-w-[44rem]">
+    <div className="reveal max-w-[44rem]">
       <div className="flex items-center gap-3">
         <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-soft text-brand">
           <Icon size={20} aria-hidden />
@@ -67,20 +68,23 @@ function SectionTitle({ icon: Icon, title, intro }: { icon: LucideIcon; title: s
   );
 }
 
+const delay = (i: number) => ({ "--delay": `${i * 90}ms` }) as React.CSSProperties;
+
 function Tag({ children }: { children: React.ReactNode }) {
-  return <li className="rounded-md bg-paper px-2 py-0.5 text-[13px] text-ink ring-1 ring-line">{children}</li>;
+  return <li className="rounded-md bg-bg px-2 py-0.5 text-[13px] text-fg ring-1 ring-line">{children}</li>;
 }
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <RevealObserver />
 
       <main id="top">
         {/* Hero */}
         <section className="hero-grid text-white">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-28 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:pb-28 lg:pt-36">
-            <div>
+            <div className="hero-in">
               <p className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[14px] font-medium text-white ring-1 ring-white/15">
                 <span className="pulse-dot h-2 w-2 rounded-full bg-signal" aria-hidden />
                 Available for full-stack roles
@@ -95,7 +99,7 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href="#work"
-                  className="inline-flex items-center gap-2 rounded-lg bg-amber px-4 py-2.5 text-[15px] font-semibold text-ink hover:bg-[#ffb83d]"
+                  className="inline-flex items-center gap-2 rounded-lg bg-amber px-4 py-2.5 text-[15px] font-semibold text-[#0f1e33] hover:bg-[#ffb83d]"
                 >
                   <FolderGit2 size={17} aria-hidden /> See my work
                 </a>
@@ -110,14 +114,18 @@ export default function Home() {
                 <MapPin size={16} aria-hidden /> {profile.location}, open to on-site and remote
               </p>
             </div>
-            <LiveBoard />
+            <div className="board-in">
+              <LiveBoard />
+            </div>
           </div>
         </section>
 
         {/* About */}
         <section id="about" className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[320px_1fr] lg:gap-16">
-            <Photo />
+            <div className="reveal">
+              <Photo />
+            </div>
             <div>
               <SectionTitle icon={User} title="About me" />
               <p className="mt-5 max-w-[42rem] text-[17.5px] leading-relaxed">
@@ -130,7 +138,7 @@ export default function Home() {
                 web apps I build today. I&apos;m looking for a full-stack or MERN developer role.
               </p>
 
-              <div className="mt-10 grid gap-8 sm:grid-cols-2">
+              <div className="reveal mt-10 grid gap-8 sm:grid-cols-2">
                 <div>
                   <h3 className="flex items-center gap-2 font-display text-[19px] font-semibold">
                     <GraduationCap size={19} className="text-brand" aria-hidden /> Education
@@ -172,10 +180,10 @@ export default function Home() {
 
           <h3 className="mt-16 font-display text-[22px] font-semibold">What I work with</h3>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {skills.map((s) => {
+            {skills.map((s, i) => {
               const Icon = skillIcons[s.group] ?? Cpu;
               return (
-                <div key={s.group} className="rounded-xl bg-white p-4 ring-1 ring-line">
+                <div key={s.group} style={delay(i)} className="reveal lift rounded-xl bg-surface p-4 ring-1 ring-line">
                   <p className="flex items-center gap-2 text-[15px] font-semibold">
                     <Icon size={17} className="text-brand" aria-hidden /> {s.group}
                   </p>
@@ -191,14 +199,14 @@ export default function Home() {
         </section>
 
         {/* Experience */}
-        <section id="experience" className="border-y border-line bg-white">
+        <section id="experience" className="border-y border-line bg-surface">
           <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-24">
             <SectionTitle icon={Briefcase} title="Experience" intro="Three internships across full-stack development, front-end engineering, and teaching." />
             <ol className="mt-12 space-y-5">
-              {experience.map((e) => (
-                <li key={e.org} className="grid gap-4 rounded-2xl p-6 ring-1 ring-line sm:grid-cols-[200px_1fr] sm:gap-8">
+              {experience.map((e, i) => (
+                <li key={e.org} style={delay(i)} className="reveal grid gap-4 rounded-2xl p-6 ring-1 ring-line sm:grid-cols-[200px_1fr] sm:gap-8">
                   <div>
-                    <p className="text-[15px] font-medium text-brand">{e.when}</p>
+                    <p className="text-[15px] font-medium text-brand-dark">{e.when}</p>
                     <p className="text-[14px] text-muted">{e.where}</p>
                   </div>
                   <div>
@@ -231,7 +239,7 @@ export default function Home() {
             {featured.map((p) => (
               <article
                 key={p.name}
-                className="grid gap-6 rounded-2xl bg-white p-6 ring-1 ring-line sm:p-8 md:grid-cols-[1fr_260px] md:gap-10"
+                className="reveal lift grid gap-6 rounded-2xl bg-surface p-6 ring-1 ring-line sm:p-8 md:grid-cols-[1fr_260px] md:gap-10"
               >
                 <div>
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -243,8 +251,8 @@ export default function Home() {
                     )}
                   </div>
                   <p className="mt-4 max-w-[42rem] text-[17px] leading-relaxed">{p.summary}</p>
-                  <p className="mt-4 max-w-[42rem] rounded-lg bg-[#fff6e5] p-4 text-[15.5px] leading-relaxed text-[#5c4413]">
-                    <span className="font-semibold text-ink">The hard part: </span>
+                  <p className="mt-4 max-w-[42rem] rounded-lg bg-amber-soft p-4 text-[15.5px] leading-relaxed text-amber-ink">
+                    <span className="font-semibold text-fg">The hard part: </span>
                     {p.hardPart}
                   </p>
                 </div>
@@ -259,7 +267,7 @@ export default function Home() {
                       href={p.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-lg bg-ink px-3.5 py-2 text-[14.5px] font-medium text-white hover:bg-ink-2"
+                      className="inline-flex items-center gap-2 rounded-lg bg-fg px-3.5 py-2 text-[14.5px] font-medium text-surface hover:opacity-90"
                     >
                       <GitHubIcon size={16} /> View code
                     </a>
@@ -281,13 +289,13 @@ export default function Home() {
 
           <h3 className="mt-16 font-display text-[22px] font-semibold">More projects</h3>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-            {more.map((m) => (
-              <li key={m.name}>
+            {more.map((m, i) => (
+              <li key={m.name} style={delay(i)} className="reveal">
                 <a
                   href={m.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex h-full items-start justify-between gap-4 rounded-xl bg-white p-5 ring-1 ring-line hover:ring-brand/50"
+                  className="lift group flex h-full items-start justify-between gap-4 rounded-xl bg-surface p-5 ring-1 ring-line hover:ring-brand/50"
                 >
                   <span>
                     <span className="block font-semibold">{m.name}</span>
@@ -302,16 +310,16 @@ export default function Home() {
         </section>
 
         {/* University projects */}
-        <section id="projects" className="bg-ink text-white">
+        <section id="projects" className="bg-navy text-white">
           <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-24">
-            <div className="flex items-center gap-3">
+            <div className="reveal flex items-center gap-3">
               <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-amber">
                 <Bot size={20} aria-hidden />
               </span>
               <h2 className="font-display text-[32px] font-semibold tracking-tight sm:text-[38px]">University projects</h2>
             </div>
 
-            <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1fr]">
+            <div className="reveal mt-12 grid gap-10 lg:grid-cols-[1fr_1fr]">
               <div>
                 <p className="text-[15px] font-medium text-amber">Final year project, 2025 – 2026</p>
                 <h3 className="mt-2 font-display text-[30px] font-semibold leading-tight tracking-tight sm:text-[36px]">
@@ -346,10 +354,10 @@ export default function Home() {
 
             <h3 className="mt-16 font-display text-[22px] font-semibold">Other university projects</h3>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-              {uniProjects.map((u) => {
+              {uniProjects.map((u, i) => {
                 const Icon = uniIcons[u.icon] ?? Cpu;
                 return (
-                  <li key={u.name} className="flex gap-4 rounded-2xl bg-white/[0.06] p-5 ring-1 ring-white/10">
+                  <li key={u.name} style={delay(i)} className="reveal flex gap-4 rounded-2xl bg-white/[0.06] p-5 ring-1 ring-white/10">
                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10 text-amber">
                       <Icon size={19} aria-hidden />
                     </span>
@@ -388,7 +396,7 @@ export default function Home() {
                   href={profile.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-[15px] font-medium ring-1 ring-line hover:ring-brand/50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-surface px-4 py-2.5 text-[15px] font-medium ring-1 ring-line hover:ring-brand/50"
                 >
                   <span className="text-[#0a66c2]"><LinkedInIcon /></span> LinkedIn
                 </a>
@@ -396,7 +404,7 @@ export default function Home() {
                   href={profile.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-[15px] font-medium ring-1 ring-line hover:ring-brand/50"
+                  className="inline-flex items-center gap-2 rounded-lg bg-surface px-4 py-2.5 text-[15px] font-medium ring-1 ring-line hover:ring-brand/50"
                 >
                   <GitHubIcon /> GitHub
                 </a>
@@ -407,12 +415,12 @@ export default function Home() {
               <h3 className="font-display text-[20px] font-semibold">Download my CV</h3>
               <p className="mt-1 text-[15px] text-muted">Pick the version that suits you.</p>
               <ul className="mt-5 space-y-3">
-                {cvFiles.map((f) => (
-                  <li key={f.href}>
+                {cvFiles.map((f, i) => (
+                  <li key={f.href} style={delay(i)} className="reveal">
                     <a
                       href={f.href}
                       download
-                      className="group flex items-center gap-4 rounded-2xl bg-white p-5 ring-1 ring-line hover:ring-brand"
+                      className="lift group flex items-center gap-4 rounded-2xl bg-surface p-5 ring-1 ring-line hover:ring-brand"
                     >
                       <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand">
                         <FileText size={22} aria-hidden />
@@ -421,7 +429,7 @@ export default function Home() {
                         <span className="block text-[17px] font-semibold">{f.label}</span>
                         <span className="block text-[14.5px] text-muted">{f.note}</span>
                       </span>
-                      <span className="rounded-lg bg-brand px-3 py-1.5 text-[14px] font-medium text-white group-hover:bg-brand-dark">
+                      <span className="rounded-lg bg-brand-deep px-3 py-1.5 text-[14px] font-medium text-white group-hover:opacity-90">
                         Download
                       </span>
                     </a>
@@ -433,7 +441,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-ink text-white/60">
+      <footer className="bg-navy text-white/60">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-[14px] sm:px-8">
           <p>© 2026 Syed Shaheer Ahmed</p>
           <div className="flex items-center gap-4">

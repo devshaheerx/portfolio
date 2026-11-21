@@ -35,8 +35,8 @@ export default function CvMenu({
   const pad = size === "sm" ? "px-3 py-1.5 text-[14px]" : "px-4 py-2.5 text-[15px]";
   const look =
     tone === "dark"
-      ? "bg-amber text-ink hover:bg-[#ffb83d]"
-      : "bg-brand text-white hover:bg-brand-dark";
+      ? "bg-amber text-[#0f1e33] hover:bg-[#ffb83d]"
+      : "bg-brand-deep text-white hover:opacity-90";
 
   return (
     <div ref={ref} className="relative">
@@ -54,7 +54,7 @@ export default function CvMenu({
       {open && (
         <div
           role="menu"
-          className={`absolute z-30 w-72 ${up ? "bottom-full mb-2" : "mt-2"} overflow-hidden rounded-xl border border-line bg-white p-1.5 text-ink shadow-[0_20px_40px_-16px_rgba(15,30,51,0.35)] ${
+          className={`absolute z-30 w-72 ${up ? "bottom-full mb-2" : "mt-2"} overflow-hidden rounded-xl border border-line bg-surface p-1.5 text-fg shadow-[0_20px_40px_-16px_rgba(15,30,51,0.35)] ${
             align === "right" ? "right-0" : "left-0"
           }`}
         >

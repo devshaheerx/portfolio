@@ -44,16 +44,16 @@ export default function LiveBoard() {
   return (
     <figure
       aria-label="A small project board showing Orbit, Ledger and Snip shipped, and your next project moving into Building"
-      className="relative w-full rounded-2xl border border-white/10 bg-white p-4 text-ink shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
+      className="light-scope relative w-full rounded-2xl border border-white/10 bg-surface p-4 text-fg shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
     >
       <div className="mb-4 flex items-center justify-between">
         <p className="font-display text-[15px] font-semibold">shaheer / portfolio</p>
         <div className="flex items-center gap-2 text-[13px] text-muted">
           <span className="flex -space-x-2">
-            <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-ink text-[11px] font-semibold text-white">
+            <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-surface bg-navy text-[11px] font-semibold text-white">
               SS
             </span>
-            <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-brand text-[11px] font-semibold text-white">
+            <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-surface bg-brand text-[11px] font-semibold text-white">
               You
             </span>
           </span>
@@ -66,7 +66,7 @@ export default function LiveBoard() {
         {COLUMNS.map((title, c) => {
           const cards = CARDS.filter((card) => s.at[card.id] === c);
           return (
-            <div key={title} className="min-h-[170px] sm:min-h-[230px] rounded-xl bg-paper p-2">
+            <div key={title} className="min-h-[170px] sm:min-h-[230px] rounded-xl bg-bg p-2">
               <p className="mb-2 flex items-center justify-between px-1 text-[12px] font-medium text-muted">
                 {title}
                 <span>{cards.length}</span>
@@ -76,7 +76,7 @@ export default function LiveBoard() {
                   <li
                     key={card.id}
                     data-fresh={s.fresh === card.id}
-                    className="board-card rounded-lg border border-line bg-white px-2.5 py-2"
+                    className="board-card rounded-lg border border-line bg-surface px-2.5 py-2"
                   >
                     <p className="text-[13px] font-semibold leading-tight">{card.title}</p>
                     <p className="mt-0.5 truncate text-[11.5px] text-muted">{card.note}</p>
@@ -102,7 +102,7 @@ export default function LiveBoard() {
             <svg width="16" height="16" viewBox="0 0 16 16" className="drop-shadow">
               <path d="M1 1l5.5 13 2-5.5L14 6.5z" fill="#142033" stroke="white" strokeWidth="1" />
             </svg>
-            <span className="ml-3 rounded-md bg-ink px-1.5 py-0.5 text-[11px] font-medium text-white">
+            <span className="ml-3 rounded-md bg-navy px-1.5 py-0.5 text-[11px] font-medium text-white">
               Shaheer
             </span>
           </div>
