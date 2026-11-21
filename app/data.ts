@@ -106,6 +106,12 @@ export const more: { name: string; what: string; stack: string; github: string }
     stack: "React, Context API, Recharts",
     github: "https://github.com/devshaheerx/react-habit-tracker",
   },
+  {
+    name: "Weather App",
+    what: "Real-time temperature, humidity, wind speed, and local time for any city",
+    stack: "Vanilla JS, Tailwind CSS, WeatherAPI",
+    github: "https://github.com/devshaheerx/weather-app",
+  },
 ];
 
 export const experience = [

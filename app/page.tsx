@@ -167,12 +167,6 @@ export default function Home() {
                 <div className="relative">
                   <Photo />
                 </div>
-                <div className="absolute -left-4 bottom-8 rounded-xl bg-surface px-4 py-3 shadow-[0_16px_40px_-20px_rgba(15,30,51,0.5)] ring-1 ring-line">
-                  <p className="flex items-center gap-2 text-[14px] font-semibold">
-                    <Trophy size={16} className="text-amber" aria-hidden /> 4.00 GPA
-                  </p>
-                  <p className="text-[12.5px] text-muted">Final semester</p>
-                </div>
               </div>
 
               <div>
@@ -419,6 +413,31 @@ export default function Home() {
                   </a>
                 </li>
               ))}
+              <li style={delay(more.length)} className="reveal reveal-scale">
+                <a
+                  href={`${profile.github}?tab=repositories`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="lift group flex h-full items-center justify-between gap-4 rounded-xl border-2 border-dashed border-brand/40 bg-brand-soft/60 p-5 hover:border-brand"
+                >
+                  <span className="flex items-center gap-4">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-fg text-bg">
+                      <GitHubIcon size={20} />
+                    </span>
+                    <span>
+                      <span className="block font-semibold">More projects on GitHub</span>
+                      <span className="mt-0.5 block text-[15px] text-muted">
+                        Counter app, to-do list, digital clock, and everything else I build
+                      </span>
+                    </span>
+                  </span>
+                  <ArrowUpRight
+                    size={18}
+                    className="shrink-0 text-brand-dark transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
+                </a>
+              </li>
             </ul>
           </div>
         </section>
