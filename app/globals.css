@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f4f6f9;
-  --color-ink: #142033;
-  --color-muted: #5a6478;
-  --color-line: #d9dfe8;
-  --color-signal: #0f9d74;
-  --color-blue: #2b59c3;
+  --color-paper: #f5f7fa;
+  --color-ink: #0f1e33;
+  --color-ink-2: #1a2d4a;
+  --color-muted: #5b6b82;
+  --color-line: #dce3ec;
+  --color-brand: #0e7c86;
+  --color-brand-dark: #0a5f67;
+  --color-brand-soft: #e3f3f4;
+  --color-amber: #f5a524;
+  --color-signal: #12b886;
   --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
 }
@@ -23,11 +27,21 @@ body {
 }
 
 ::selection {
-  background: #cfe0ff;
+  background: #bfe6e9;
+}
+
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+.hero-grid {
+  background-color: var(--color-ink);
+  background-image: radial-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-blue);
+  outline: 2px solid var(--color-amber);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -41,7 +55,7 @@ body {
 }
 .board-card[data-fresh="true"] {
   border-color: var(--color-signal);
-  box-shadow: 0 0 0 3px rgb(15 157 116 / 0.15);
+  box-shadow: 0 0 0 3px rgb(18 184 134 / 0.18);
 }
 .board-cursor {
   transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);

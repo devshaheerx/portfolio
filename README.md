@@ -16,7 +16,9 @@ Open http://localhost:3000.
 All text (projects, experience, skills, awards, links) lives in `app/data.ts`.
 To add a live demo button to a project, add a `live: "https://..."` field to it.
 
-Replace `public/Syed_Shaheer_Ahmed_CV.pdf` whenever you update your CV.
+Your photo: save it as `public/profile.jpg` (a portrait, about 800 × 1000 px). Until then, the site shows your initials.
+
+CV downloads: replace `public/Syed_Shaheer_Ahmed_Resume.pdf` (Resume) and `public/Syed_Shaheer_Ahmed_CV.pdf` (Detailed CV) whenever you update them.
 
 ## Deploy
 

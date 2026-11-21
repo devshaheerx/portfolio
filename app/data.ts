@@ -7,8 +7,22 @@ export const profile = {
   email: "syedshaheerahmed90@gmail.com",
   github: "https://github.com/devshaheerx",
   linkedin: "https://www.linkedin.com/in/syedshaheerahmeddev/",
-  cv: "/Syed_Shaheer_Ahmed_CV.pdf",
+  photo: "/profile.jpg", // put your photo in the public folder with this name
 };
+
+// The two download options in the CV menu
+export const cvFiles = [
+  {
+    label: "Resume",
+    note: "1 page, full-stack focus",
+    href: "/Syed_Shaheer_Ahmed_Resume.pdf",
+  },
+  {
+    label: "Detailed CV",
+    note: "2 pages, includes education, robotics and awards",
+    href: "/Syed_Shaheer_Ahmed_CV.pdf",
+  },
+];
 
 export type Project = {
   name: string;
@@ -132,7 +146,6 @@ export const skills: { group: string; items: string[] }[] = [
 ];
 
 export const awards = [
-  "Final semester GPA 4.00 / 4.00",
   "Presenter, 41st All Pakistan IEEEP Students' Seminar 2026",
   "Runner-up with cash prize, Semester Project Exhibition (MAJU)",
   "3rd position in class, First Year Pre-Engineering",
@@ -141,4 +154,43 @@ export const awards = [
 export const certifications = [
   "Introduction to Internet of Things, Cisco (2025)",
   "Python Essentials 1 & 2, Cisco and OpenEDG (2023–2024)",
+];
+
+export const uniProjects = [
+  {
+    name: "Underwater Acoustic Detection System",
+    what: "Analyzes acoustic signals to calculate distance and classify underwater objects.",
+    badge: "Runner-up, Semester Project Exhibition",
+    icon: "waves",
+  },
+  {
+    name: "Theft Detection System",
+    what: "Raspberry Pi and PIR sensor system that captures images and sends real-time email alerts on motion.",
+    icon: "camera",
+  },
+  {
+    name: "Line Following Robot",
+    what: "Autonomous robot that tracks a black line using IR sensors and digital logic ICs.",
+    icon: "route",
+  },
+  {
+    name: "Music Playlist App",
+    what: "C++ music player built on a doubly linked list to manage and navigate playlists.",
+    icon: "music",
+  },
+];
+
+export const education = [
+  {
+    degree: "B.E. Computer Systems Engineering",
+    school: "Muhammad Ali Jinnah University (MAJU)",
+    when: "2022 – 2026",
+    detail: "CGPA 3.35 / 4.00, final semester 4.00 / 4.00",
+  },
+  {
+    degree: "Intermediate, Pre-Engineering",
+    school: "Fatimiyah Boys College",
+    when: "2020 – 2022",
+    detail: "81%, A-One grade",
+  },
 ];

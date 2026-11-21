@@ -33,10 +33,8 @@ export default function LiveBoard() {
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStep(3);
-      return;
-    }
+    // People who prefer reduced motion see a still board.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => setStep((s) => (s + 1) % STEPS.length), 2400);
     return () => clearInterval(id);
   }, []);
@@ -46,7 +44,7 @@ export default function LiveBoard() {
   return (
     <figure
       aria-label="A small project board showing Orbit, Ledger and Snip shipped, and your next project moving into Building"
-      className="relative w-full rounded-2xl border border-line bg-white p-4 shadow-[0_20px_50px_-30px_rgba(20,32,51,0.45)]"
+      className="relative w-full rounded-2xl border border-white/10 bg-white p-4 text-ink shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
     >
       <div className="mb-4 flex items-center justify-between">
         <p className="font-display text-[15px] font-semibold">shaheer / portfolio</p>
@@ -55,7 +53,7 @@ export default function LiveBoard() {
             <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-ink text-[11px] font-semibold text-white">
               SS
             </span>
-            <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-blue text-[11px] font-semibold text-white">
+            <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-brand text-[11px] font-semibold text-white">
               You
             </span>
           </span>
