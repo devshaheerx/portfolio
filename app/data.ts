@@ -32,11 +32,14 @@ export type Project = {
   github: string;
   live?: string; // add a live demo link when you have one
   context?: string;
+  preview: "orbit" | "ledger" | "pulse" | "snip";
+  image?: string; // optional real screenshot in /public, e.g. "/projects/orbit.png"
 };
 
 export const featured: Project[] = [
   {
     name: "Orbit",
+    preview: "orbit",
     summary:
       "A Trello-style project management tool where teams create projects, assign tasks, and discuss work in comment threads.",
     hardPart:
@@ -47,6 +50,7 @@ export const featured: Project[] = [
   },
   {
     name: "Ledger",
+    preview: "ledger",
     summary:
       "An expense tracker with spending breakdowns, income-vs-expense trends, and budget alerts.",
     hardPart:
@@ -56,6 +60,7 @@ export const featured: Project[] = [
   },
   {
     name: "Pulse",
+    preview: "pulse",
     summary:
       "A social media platform with profiles, image posts, likes, follows, a personalized feed, and notifications.",
     hardPart:
@@ -66,6 +71,7 @@ export const featured: Project[] = [
   },
   {
     name: "Snip",
+    preview: "snip",
     summary:
       "A URL shortener with custom aliases, link expiration, and click analytics.",
     hardPart:
