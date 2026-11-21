@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f4f6f9;
+  --color-ink: #142033;
+  --color-muted: #5a6478;
+  --color-line: #d9dfe8;
+  --color-signal: #0f9d74;
+  --color-blue: #2b59c3;
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #cfe0ff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Live board animation */
+.board-card {
+  transition:
+    transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 300ms ease,
+    border-color 300ms ease;
+}
+.board-card[data-fresh="true"] {
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0 3px rgb(15 157 116 / 0.15);
+}
+.board-cursor {
+  transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.pulse-dot {
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.typing span {
+  animation: blink 1.2s infinite both;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .board-card, .board-cursor { transition: none; }
+  .pulse-dot, .typing span { animation: none; }
+}
