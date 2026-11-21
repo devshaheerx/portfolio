@@ -2,7 +2,7 @@
 
 My personal portfolio as a Full-Stack MERN Developer: my projects, experience, university work, and CV in one place.
 
-**Live site:** [YOUR-VERCEL-LINK](https://YOUR-VERCEL-LINK)
+**Live site:** [shaheer-portfolio-sage.vercel.app](https://shaheer-portfolio-sage.vercel.app)
 
 ## Features
 
@@ -52,6 +52,8 @@ All text lives in `app/data.ts`: projects, experience, skills, awards, and links
 - **Photo:** save it as `public/profile.jpg`
 - **CVs:** replace `public/Syed_Shaheer_Ahmed_Resume.pdf` and `public/Syed_Shaheer_Ahmed_CV.pdf`
 - **Live demo button:** add `live: "https://..."` to any project in `app/data.ts`
+
+Every push to `main` redeploys the live site on Vercel automatically.
 
 ## Contact
 

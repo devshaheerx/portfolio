@@ -6,6 +6,7 @@ import "@fontsource/ibm-plex-sans/600.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shaheer-portfolio-sage.vercel.app"),
   title: "Syed Shaheer Ahmed | Full-Stack MERN Developer",
   description:
     "Full-stack MERN developer in Karachi building secure, real-time web apps with React, Next.js, Node.js, Express, and MongoDB.",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     title: "Syed Shaheer Ahmed | Full-Stack MERN Developer",
     description: "Secure, real-time web apps with React, Next.js, Node.js, Express, and MongoDB.",
     type: "website",
+    url: "https://shaheer-portfolio-sage.vercel.app",
   },
 };
 
