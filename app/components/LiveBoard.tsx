@@ -46,9 +46,9 @@ export default function LiveBoard() {
       aria-label="A small project board showing Orbit, Ledger and Snip shipped, and your next project moving into Building"
       className="light-scope relative w-full rounded-2xl border border-white/10 bg-surface p-4 text-fg shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
     >
-      <div className="mb-4 flex items-center justify-between">
-        <p className="font-display text-[15px] font-semibold">shaheer / portfolio</p>
-        <div className="flex items-center gap-2 text-[13px] text-muted">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <p className="truncate font-display text-[15px] font-semibold">shaheer / portfolio</p>
+        <div className="flex shrink-0 items-center gap-2 text-[13px] text-muted">
           <span className="flex -space-x-2">
             <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-surface bg-navy text-[11px] font-semibold text-white">
               SS
@@ -58,7 +58,7 @@ export default function LiveBoard() {
             </span>
           </span>
           <span className="pulse-dot h-2 w-2 rounded-full bg-signal" aria-hidden />
-          2 online
+          <span className="hidden min-[420px]:inline">2 online</span>
         </div>
       </div>
 
@@ -67,7 +67,7 @@ export default function LiveBoard() {
           const cards = CARDS.filter((card) => s.at[card.id] === c);
           return (
             <div key={title} className="min-h-[170px] sm:min-h-[230px] rounded-xl bg-bg p-2">
-              <p className="mb-2 flex items-center justify-between px-1 text-[12px] font-medium text-muted">
+              <p className="mb-2 flex items-center justify-between gap-1 px-1 text-[12px] font-medium text-muted">
                 {title}
                 <span>{cards.length}</span>
               </p>

@@ -7,6 +7,7 @@ import {
   Camera,
   Cpu,
   Database,
+  Download,
   Eye,
   FileText,
   FolderGit2,
@@ -162,7 +163,7 @@ export default function Home() {
         <section id="about" className="relative overflow-hidden">
           <Blob className="-left-32 top-24 h-80 w-80 bg-brand/10" />
           <div className="relative mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-            <div className="grid items-start gap-14 lg:grid-cols-[340px_1fr] lg:gap-16">
+            <div className="grid items-start gap-14 md:grid-cols-[240px_1fr] md:gap-10 lg:grid-cols-[340px_1fr] lg:gap-16">
               <div className="reveal reveal-left relative mx-auto w-full max-w-[320px]">
                 <div aria-hidden className="absolute -bottom-4 -right-4 h-full w-full rounded-2xl border-2 border-brand/50" />
                 <div className="relative">
@@ -182,7 +183,7 @@ export default function Home() {
                   the web apps I build today. I&apos;m looking for a full-stack or MERN developer role.
                 </p>
 
-                <ul className="mt-8 grid gap-3 sm:grid-cols-3">
+                <ul className="mt-8 grid gap-3 min-[560px]:max-md:grid-cols-3 xl:grid-cols-3">
                   {[
                     { icon: Briefcase, label: "3 internships", sub: "Full-stack, front-end, teaching" },
                     { icon: FolderGit2, label: "9 web projects", sub: "All on GitHub" },
@@ -282,7 +283,7 @@ export default function Home() {
               {experience.map((e, i) => {
                 const right = i % 2 === 1;
                 return (
-                  <li key={e.org} className="relative grid pb-12 pl-16 last:pb-0 md:grid-cols-2 md:gap-16 md:pl-0">
+                  <li key={e.org} className="relative grid pb-10 pl-14 last:pb-0 sm:pb-12 sm:pl-16 md:grid-cols-2 md:gap-16 md:pl-0">
                     <span
                       aria-hidden
                       className="reveal reveal-scale absolute left-5 top-1 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-brand text-white ring-[6px] ring-surface md:left-1/2"
@@ -334,7 +335,7 @@ export default function Home() {
                 const flip = i % 2 === 1;
                 return (
                   <article key={p.name} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-                    <div className={`reveal ${flip ? "reveal-right lg:order-2" : "reveal-left"}`}>
+                    <div className={`reveal mx-auto w-full max-w-xl lg:max-w-none ${flip ? "reveal-right lg:order-2" : "reveal-left"}`}>
                       <div className="relative">
                         <div
                           aria-hidden
@@ -521,15 +522,15 @@ export default function Home() {
 
         {/* Contact */}
         <section id="contact" className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-          <div className="reveal reveal-scale relative overflow-hidden rounded-3xl bg-navy p-8 text-white sm:p-12">
+          <div className="reveal reveal-scale relative overflow-hidden rounded-3xl bg-navy p-6 text-white sm:p-10 lg:p-12">
             <Blob className="-right-24 -top-24 h-72 w-72 bg-brand/30" />
             <Blob className="-bottom-24 -left-24 h-72 w-72 bg-amber/15" />
-            <div className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr]">
+            <div className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr] [&>*]:min-w-0">
               <div>
                 <span className="grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-amber">
                   <Mail size={21} aria-hidden />
                 </span>
-                <h2 className="mt-5 font-display text-[36px] font-semibold leading-[1.05] tracking-tight sm:text-[46px]">
+                <h2 className="mt-5 font-display text-[30px] font-semibold leading-[1.08] tracking-tight min-[400px]:text-[36px] sm:text-[46px]">
                   Hiring a full-stack developer? Let&apos;s talk.
                 </h2>
                 <p className="mt-4 max-w-[30rem] text-[17px] leading-relaxed text-white/70">
@@ -565,17 +566,18 @@ export default function Home() {
                       <a
                         href={f.href}
                         download
-                        className="group flex items-center gap-4 rounded-2xl bg-white p-5 text-[#0f1e33] transition-transform hover:-translate-y-0.5"
+                        className="group flex items-center gap-3 rounded-2xl bg-white p-4 text-[#0f1e33] transition-transform hover:-translate-y-0.5 sm:gap-4 sm:p-5"
                       >
-                        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#e3f3f4] text-[#0e7c86]">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#e3f3f4] text-[#0e7c86] sm:h-12 sm:w-12">
                           <FileText size={22} aria-hidden />
                         </span>
-                        <span className="flex-1">
+                        <span className="min-w-0 flex-1">
                           <span className="block text-[17px] font-semibold">{f.label}</span>
                           <span className="block text-[14px] text-[#5b6b82]">{f.note}</span>
                         </span>
-                        <span className="rounded-lg bg-amber px-3 py-1.5 text-[14px] font-semibold text-[#0f1e33]">
-                          Download
+                        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-amber px-2.5 py-1.5 text-[14px] font-semibold text-[#0f1e33] sm:px-3">
+                          <Download size={15} aria-hidden />
+                          <span className="hidden min-[420px]:inline">Download</span>
                         </span>
                       </a>
                     </li>

@@ -54,7 +54,7 @@ export default function Navbar() {
           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand text-white shadow-[inset_0_-2px_0_rgb(0_0_0/0.15)]">
             <Code2 size={20} strokeWidth={2.4} aria-hidden />
           </span>
-          <span className="font-display text-[16px] font-semibold leading-none tracking-tight sm:text-[17px]">
+          <span className="whitespace-nowrap font-display text-[15px] font-semibold leading-none tracking-tight min-[360px]:text-[16px] sm:text-[17px]">
             Syed Shaheer Ahmed
           </span>
         </a>
