@@ -30,6 +30,7 @@ import RevealObserver from "./components/RevealObserver";
 import Photo from "./components/Photo";
 import ProjectPreview from "./components/ProjectPreview";
 import CvMenu from "./components/CvMenu";
+import EmailActions, { gmailLink } from "./components/EmailActions";
 import { GitHubIcon, LinkedInIcon } from "./components/icons";
 import {
   profile,
@@ -534,12 +535,7 @@ export default function Home() {
                 <p className="mt-4 max-w-[30rem] text-[17px] leading-relaxed text-white/70">
                   Download my CV, or reach out directly by email or LinkedIn.
                 </p>
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="mt-7 inline-flex items-center gap-2 break-all font-display text-[19px] font-medium text-amber underline decoration-amber/40 underline-offset-[6px] hover:decoration-amber sm:text-[22px]"
-                >
-                  {profile.email}
-                </a>
+                <EmailActions />
                 <div className="mt-7 flex flex-wrap gap-3">
                   <a
                     href={profile.linkedin}
@@ -601,7 +597,7 @@ export default function Home() {
             <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-white">
               <LinkedInIcon />
             </a>
-            <a href={`mailto:${profile.email}`} aria-label="Email" className="hover:text-white">
+            <a href={gmailLink} target="_blank" rel="noreferrer" aria-label="Email me in Gmail" className="hover:text-white">
               <Mail size={18} />
             </a>
             <CvMenu size="sm" tone="dark" up />
