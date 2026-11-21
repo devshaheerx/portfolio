@@ -1,25 +1,60 @@
-# Syed Shaheer Ahmed — Portfolio
+# Syed Shaheer Ahmed — Developer Portfolio
 
-Personal portfolio of Syed Shaheer Ahmed, Full-Stack MERN Developer. Built with Next.js, TypeScript, and Tailwind CSS.
+My personal portfolio as a Full-Stack MERN Developer: my projects, experience, university work, and CV in one place.
+
+**Live site:** [YOUR-VERCEL-LINK](https://YOUR-VERCEL-LINK)
+
+## Features
+
+- **Live project board in the hero:** an animated Kanban board that shows real-time collaboration
+- **Dark and light mode:** follows your system setting and remembers your choice
+- **Scroll animations:** sections animate each time they come into view, and the experience timeline draws itself as you scroll
+- **Fully responsive:** tested from 320px phones to 1920px desktops
+- **Two CV downloads:** a 1-page resume and a 2-page detailed CV
+- **Email options that always work:** copy the address or open a new email in Gmail
+- **Accessible:** keyboard focus styles, screen-reader labels, and reduced-motion support
+
+## Tech stack
+
+| Area | Tools |
+|---|---|
+| Framework | Next.js (App Router), React |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Icons | Lucide React |
+| Fonts | Bricolage Grotesque, IBM Plex Sans |
+| Hosting | Vercel |
+
+## Sections
+
+1. Hero
+2. About (education, recognition, skills)
+3. Experience timeline
+4. Selected work (Orbit, Ledger, Pulse, Snip) and more projects
+5. University projects (HydroBin X and others)
+6. Contact and CV downloads
 
 ## Run it locally
 
 ```bash
+git clone https://github.com/devshaheerx/portfolio.git
+cd portfolio
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
+Then open http://localhost:3000.
 
-## Edit the content
+## Update the content
 
-All text (projects, experience, skills, awards, links) lives in `app/data.ts`.
-To add a live demo button to a project, add a `live: "https://..."` field to it.
+All text lives in `app/data.ts`: projects, experience, skills, awards, and links.
 
-Your photo: save it as `public/profile.jpg` (a portrait, about 800 × 1000 px). Until then, the site shows your initials.
+- **Photo:** save it as `public/profile.jpg`
+- **CVs:** replace `public/Syed_Shaheer_Ahmed_Resume.pdf` and `public/Syed_Shaheer_Ahmed_CV.pdf`
+- **Live demo button:** add `live: "https://..."` to any project in `app/data.ts`
 
-CV downloads: replace `public/Syed_Shaheer_Ahmed_Resume.pdf` (Resume) and `public/Syed_Shaheer_Ahmed_CV.pdf` (Detailed CV) whenever you update them.
+## Contact
 
-## Deploy
-
-Push to GitHub, then import the repo at https://vercel.com/new. No settings need changing.
+- Email: syedshaheerahmed90@gmail.com
+- LinkedIn: [linkedin.com/in/syedshaheerahmeddev](https://www.linkedin.com/in/syedshaheerahmeddev/)
+- GitHub: [github.com/devshaheerx](https://github.com/devshaheerx)
