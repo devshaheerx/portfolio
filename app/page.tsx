@@ -126,7 +126,7 @@ export default function Home() {
             <div className="hero-in">
               <p className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[14px] font-medium text-white ring-1 ring-white/15">
                 <span className="pulse-dot h-2 w-2 rounded-full bg-signal" aria-hidden />
-                Available for full-stack roles
+                Open to junior software roles
               </p>
               <h1 className="font-display text-[44px] font-semibold leading-[1.02] tracking-[-0.025em] sm:text-[62px]">
                 I build web apps that stay secure, fast, and in sync.
@@ -180,7 +180,8 @@ export default function Home() {
                 </p>
                 <p className="reveal mt-4 max-w-[42rem] text-[17.5px] leading-relaxed text-muted">
                   Engineering taught me to build things that work outside a demo, from a robot that cleans creeks to
-                  the web apps I build today. I&apos;m looking for a full-stack or MERN developer role.
+                  the web apps I build today. I&apos;m open to junior roles in software engineering, full-stack and
+                  backend development, AI-powered applications, and cloud/DevOps.
                 </p>
 
                 <ul className="mt-8 grid gap-3 min-[560px]:max-md:grid-cols-3 xl:grid-cols-3">
@@ -531,7 +532,7 @@ export default function Home() {
                   <Mail size={21} aria-hidden />
                 </span>
                 <h2 className="mt-5 font-display text-[30px] font-semibold leading-[1.08] tracking-tight min-[400px]:text-[36px] sm:text-[46px]">
-                  Hiring a full-stack developer? Let&apos;s talk.
+                  Hiring a junior developer? Let&apos;s talk.
                 </h2>
                 <p className="mt-4 max-w-[30rem] text-[17px] leading-relaxed text-white/70">
                   Download my CV, or reach out directly by email or LinkedIn.
